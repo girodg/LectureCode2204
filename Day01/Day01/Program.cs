@@ -19,8 +19,23 @@ namespace Day01
             Factor(ref n2, 2);//in the method, n2 has a new name (number)
             Console.WriteLine(n1);
 
-            TimeStamp(ref msg);
+            string otherMsg = string.Empty;
+            TimeStamp(ref otherMsg);
             PrintMessage(msg);
+
+            Curve(94, 5, out int newGrade);
+            Console.WriteLine(newGrade);
+        }
+
+        static void Curve(int grade, int curve, out int curvedGrade)
+        {
+            //ternary operator
+            curvedGrade = (grade < 95) ? grade + curve : 100;
+            ////OR
+            //if (grade < 95)
+            //    curvedGrade = grade + curve;
+            //else
+            //    curvedGrade = 100;
         }
 
         static void TimeStamp(ref string msg)
