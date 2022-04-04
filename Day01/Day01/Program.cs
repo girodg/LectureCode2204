@@ -20,11 +20,43 @@ namespace Day01
             Console.WriteLine(n1);
 
             string otherMsg = string.Empty;
-            TimeStamp(ref otherMsg);
+            TimeStamp(ref msg);
             PrintMessage(msg);
 
             Curve(94, 5, out int newGrade);
             Console.WriteLine(newGrade);
+
+            MyFavoriteNumber(out int myFave);
+            PrintMessage($"Your favorite number is {myFave}. weird.");
+
+            PostFix(msg, 5);
+            PostFix(msg);
+        }
+
+        static void PostFix(string msg, int num = 1)
+        {
+            Console.WriteLine($"{msg} #{num}");
+        }
+
+        static void MyFavoriteNumber(out int fave)
+        {
+            Console.Write("Please enter your favorite number: ");
+            string numStr = Console.ReadLine();
+            try
+            {
+                fave = int.Parse(numStr);
+            }
+            catch (Exception)
+            {
+                fave = 0;
+                Console.WriteLine("That was not a number.");
+            }
+            //OR
+            bool isGood = int.TryParse(numStr, out fave);
+            if (isGood)
+                Console.WriteLine("Thank you.");
+            else
+                Console.WriteLine("NO! Not a number.");
         }
 
         static void Curve(int grade, int curve, out int curvedGrade)
@@ -46,7 +78,7 @@ namespace Day01
 
         static void Factor(ref int number, int factor)
         {
-            number *= factor; 
+            number *= factor;
         }
 
         static int Add(int num1, int num2)//Pass By Value (think Copy)
