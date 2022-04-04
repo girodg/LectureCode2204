@@ -18,6 +18,15 @@ namespace Day01
             Factor(ref n1, 3);//in the method, n1 has a new name (number)
             Factor(ref n2, 2);//in the method, n2 has a new name (number)
             Console.WriteLine(n1);
+
+            TimeStamp(ref msg);
+            PrintMessage(msg);
+        }
+
+        static void TimeStamp(ref string msg)
+        {
+            //$ - interpolated string
+            msg = $"{DateTime.Now}: {msg}";
         }
 
         static void Factor(ref int number, int factor)
