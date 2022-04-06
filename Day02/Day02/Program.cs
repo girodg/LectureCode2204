@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Day02
 {
@@ -64,6 +65,12 @@ namespace Day02
 
             foreach (var number in nums)
                 Console.WriteLine(number);
+
+            //ToList
+            List<int> numsList = nums.ToList();
+
+            //use the List constructor overload
+            List<int> numsList2 = new List<int>(nums);
         }
 
         static void ListChallenge()
@@ -75,11 +82,18 @@ namespace Day02
                 grades.Add(rando.NextDouble()*100);
             }
             PrintGrades(grades);
+
             int numRemoved = DropFailing(grades);
             Console.WriteLine($"Number of students dropped: {numRemoved}");
             Console.WriteLine("Press any key to show the new list...");
             Console.ReadKey();
             PrintGrades(grades);
+
+
+            Console.WriteLine("Press any key to show the curved grades...");
+            Console.ReadKey();
+            List<double> curved = CurveGrades(grades);
+            PrintGrades(curved);
         }
 
         static void PrintGrades(List<double> grades)
@@ -130,6 +144,16 @@ namespace Day02
                 }
             }
             return numDropped;
+        }
+
+        static List<double> CurveGrades(List<double> grades)
+        {
+            var curved = grades.ToList();
+            for (int i = 0; i < curved.Count; i++)
+            {
+                curved[i] = (curved[i] < 95) ? curved[i] + 5 : 100;
+            }
+            return curved;
         }
     }
 }
