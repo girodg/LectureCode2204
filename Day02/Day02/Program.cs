@@ -42,11 +42,16 @@ namespace Day02
             #endregion
 
             #region Challenges
-            Console.WriteLine("Press any key for list challenge...");
-            Console.ReadKey();
+            PressAny("Press any key for list challenge...");
             ListChallenge();
             #endregion
 
+        }
+
+        static void PressAny(string message)
+        {
+            Console.WriteLine(message);
+            Console.ReadKey();
         }
 
         private static void PrintInfo(List<bool> flags)
@@ -85,13 +90,11 @@ namespace Day02
 
             int numRemoved = DropFailing(grades);
             Console.WriteLine($"Number of students dropped: {numRemoved}");
-            Console.WriteLine("Press any key to show the new list...");
-            Console.ReadKey();
+            PressAny("Press any key to show the new list...");
             PrintGrades(grades);
 
 
-            Console.WriteLine("Press any key to show the curved grades...");
-            Console.ReadKey();
+            PressAny("Press any key to show the curved grades...");
             List<double> curved = CurveGrades(grades);
             PrintGrades(curved);
         }
