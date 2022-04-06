@@ -75,6 +75,11 @@ namespace Day02
                 grades.Add(rando.NextDouble()*100);
             }
             PrintGrades(grades);
+            int numRemoved = DropFailing(grades);
+            Console.WriteLine($"Number of students dropped: {numRemoved}");
+            Console.WriteLine("Press any key to show the new list...");
+            Console.ReadKey();
+            PrintGrades(grades);
         }
 
         static void PrintGrades(List<double> grades)
@@ -101,6 +106,30 @@ namespace Day02
                 Console.WriteLine($"{grade,7:N3}");
                 Console.ResetColor();
             }
+        }
+
+        static int DropFailing(List<double> grades)
+        {
+            int numDropped = 0;
+            //for (int i = 0; i < grades.Count; i++)
+            //{
+            //    if(grades[i] < 59.5)
+            //    {
+            //        numDropped++;
+            //        grades.RemoveAt(i);
+            //        --i;
+            //    }
+            //}
+            //OR
+            for (int i = grades.Count - 1; i >= 0; i--)
+            {
+                if (grades[i] < 59.5)
+                {
+                    numDropped++;
+                    grades.RemoveAt(i);
+                }
+            }
+            return numDropped;
         }
     }
 }
