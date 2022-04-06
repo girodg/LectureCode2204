@@ -87,15 +87,15 @@ namespace Day01
             return num1 + num2;
         }
 
-        static void PrintMessage(string messageToPrint)
+        static void PrintMessage(string messageToPrint = "Welcome to Gotham.")
         {
             Console.WriteLine(messageToPrint);
         }
 
-        static void PrintMessage()
-        {
-            Console.WriteLine("Welcome to Gotham.");
-        }//ctrl+k,d to fix formatting
+        //static void PrintMessage()
+        //{
+        //    Console.WriteLine("Welcome to Gotham.");
+        //}//ctrl+k,d to fix formatting
 
         static string GetMessage()
         {
