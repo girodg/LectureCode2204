@@ -97,7 +97,7 @@ namespace Day03
 
         static void Challenges()
         {
-            Random randy = new Random();
+            Random randy = new Random();//calling the constructor method
             Dictionary<string, double> pg2 = new Dictionary<string, double>()
             {
                 {"Joseph", randy.NextDouble()*100},
@@ -122,7 +122,9 @@ namespace Day03
             pg2["Oscar"] = randy.NextDouble() * 100;
 
             PrintGrades(pg2);
+            CurveStudent(pg2);
             DropStudent(pg2);
+
         }
 
         private static void DropStudent(Dictionary<string, double> course)
@@ -141,6 +143,26 @@ namespace Day03
                 }
                 else
                     Console.WriteLine($"{name} was not in the course."); 
+            } while (true);
+        }
+
+        private static void CurveStudent(Dictionary<string, double> course)
+        {
+            do
+            {
+                Console.Write("Name of the student to curve: ");
+                string name = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(name)) break;
+
+                if(course.TryGetValue(name, out double grade))
+                {
+                    grade = (grade < 95) ? grade + 5 : 100;
+                    course[name] = grade;
+                    PrintGrades(course);
+                    Console.WriteLine($"{name} was curved.");
+                }
+                else
+                    Console.WriteLine($"{name} was not in the course.");
             } while (true);
         }
 
