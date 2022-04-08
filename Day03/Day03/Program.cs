@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Threading;
 
@@ -61,6 +62,24 @@ namespace Day03
             PressAnyKey("Press any key to continue...");
             PrintMenu(menu);
 
+            string menuItem = "Fishwich";
+            if (menu.ContainsKey(menuItem))
+            {
+                //update the value
+                menu[menuItem] += 5;
+                float price = menu[menuItem];//will throw an exception if key is not found
+                Console.WriteLine($"{menuItem} now costs {price,7:C2}. Thanks Putin.");
+            }
+            else
+                Console.WriteLine($"{menuItem} is not on the menu.");
+
+            if (menu.TryGetValue(menuItem, out float menuPrice))
+                Console.WriteLine($"{menuItem} costs {menuPrice,7:C2}");
+            else
+                Console.WriteLine($"{menuItem} is not on the menu.");
+
+            Console.WriteLine();
+
             PressAnyKey("Press any key to continue...");
             Challenges();
         }
@@ -103,6 +122,26 @@ namespace Day03
             pg2["Oscar"] = randy.NextDouble() * 100;
 
             PrintGrades(pg2);
+            DropStudent(pg2);
+        }
+
+        private static void DropStudent(Dictionary<string, double> course)
+        {
+            do
+            {
+                Console.Write("Name of the student to drop: ");
+                string name = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(name)) break;
+
+                bool wasRemoved = course.Remove(name);
+                if (wasRemoved)
+                {
+                    PrintGrades(course);
+                    Console.WriteLine($"{name} was dropped from the course.");
+                }
+                else
+                    Console.WriteLine($"{name} was not in the course."); 
+            } while (true);
         }
 
         static void PrintGrades(Dictionary<string, double> course)
