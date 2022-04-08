@@ -11,7 +11,6 @@ namespace Day03
         {
             PressAnyKey("Press any key to continue...");
 
-            Console.WriteLine("-------Welcome to the Burger Barn--------");
             Dictionary<string, float> menu = new Dictionary<string, float>()
             {
                 //{ key, value }
@@ -43,14 +42,38 @@ namespace Day03
             //Thread.CurrentThread.CurrentCulture = new CultureInfo("de-DE");
             //Thread.CurrentThread.CurrentUICulture = new CultureInfo("de-DE");
             Console.OutputEncoding = System.Text.Encoding.Unicode;
+            PrintMenu(menu);
+
+
+            string itemToRemove = "Filet";
+            bool wasRemoved = menu.Remove(itemToRemove);
+            if (wasRemoved)
+                Console.WriteLine($"{itemToRemove} was dropped from the menu.");
+            else
+                Console.WriteLine($"{itemToRemove} was not on the menu.");
+
+            itemToRemove = "Chicken Nuggets";
+            wasRemoved = menu.Remove(itemToRemove);
+            if (wasRemoved)
+                Console.WriteLine($"{itemToRemove} was dropped from the menu.");
+            else
+                Console.WriteLine($"{itemToRemove} was not on the menu.");
+            PressAnyKey("Press any key to continue...");
+            PrintMenu(menu);
+
+            PressAnyKey("Press any key to continue...");
+            Challenges();
+        }
+
+        private static void PrintMenu(Dictionary<string, float> menu)
+        {
+            Console.Clear();
+            Console.WriteLine("-------Welcome to the Burger Barn--------");
             foreach (var menuItem in menu)
             {
                 float price = menuItem.Value;
                 Console.WriteLine($"{price,10:C2} {menuItem.Key}");
             }
-
-            PressAnyKey("Press any key to continue...");
-            Challenges();
         }
 
         static void Challenges()
