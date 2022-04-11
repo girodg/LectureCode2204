@@ -7,7 +7,7 @@ namespace Day04
 {
     enum SuperPower
     {
-        Fly, Strength, Invisibility, Speed, Money, Telepathy, Swim
+        Fly, Strength, Invisibility, Speed, Money, Telepathy, Swim, SuperSpeed
     }
     class Superhero
     {
@@ -99,6 +99,44 @@ namespace Day04
                 Console.WriteLine($"{filePath} is not there!!");
             #endregion
             #endregion
+
+            filePath = "numbers.json";
+            List<int> nums = new List<int>() { 5, 4, 3, 2, 1 };
+            WriteJson(filePath, nums);
+            List<int> numbers = ReadJson(filePath);
+        }
+
+        private static List<int> ReadJson(string filePath)
+        {
+            if (File.Exists(filePath))
+            {
+                string numText = File.ReadAllText(filePath);
+                try
+                {
+                    List<int> numbers = JsonConvert.DeserializeObject<List<int>>(numText);
+                    return numbers;
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("ERROR! ERROR! Read all about it!");
+                }
+            }
+            else
+                Console.WriteLine($"{filePath} is not there!!");
+            return null;
+        }
+
+        private static void WriteJson(string filePath, List<int> numbers)
+        {
+            using (StreamWriter sw = new StreamWriter(filePath))
+            {
+                using (JsonTextWriter jtw = new JsonTextWriter(sw))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    serializer.Formatting = Formatting.Indented;
+                    serializer.Serialize(jtw, numbers);
+                }
+            }
         }
 
         static void WriteData(string fPath)
