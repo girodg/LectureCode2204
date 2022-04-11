@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Day04
@@ -26,6 +27,36 @@ namespace Day04
 				sw.Write(delimiter);
 				sw.WriteLine("The end.");
             }//3. Closes the file
+
+            using (StreamReader sr = new StreamReader(filePath))
+            {
+				string line;
+				while ( (line = sr.ReadLine()) != null)
+                {
+					string[] data = line.Split(delimiter);
+                    foreach (var item in data)
+                        Console.WriteLine(item);
+                }
+            }
+
+			WriteData(filePath);
+        }
+
+		static void WriteData(string fPath)
+        {
+			List<int> nums = new List<int>() { 5, 4, 3, 2, 1 };
+			char delimiter = '>';
+            using (StreamWriter sw = new StreamWriter(fPath))
+            {
+				bool isFirst = true;
+                for (int i = 0; i < nums.Count; i++)
+                {
+					if(!isFirst)
+						sw.Write(delimiter);
+					sw.Write(nums[i]);
+					isFirst = false;
+                }
+            }
         }
 
         static string GetSpeech()
