@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Day06
 {
@@ -20,6 +22,35 @@ namespace Day06
             if (compResult == 0) Console.WriteLine($"{s1} EQUALS {s2}");
             else if (compResult == -1) Console.WriteLine($"{s1} LESS THAN {s2}");
             else if (compResult == 1) Console.WriteLine($"{s1} GREATER THAN {s2}");
+
+            Split(nums.ToList());
+        }
+
+        static void Split(List<int> nums)
+        {
+            List<int> left = new List<int>();
+            List<int> right = new List<int>();
+            int mid = nums.Count / 2;
+            for (int i = 0; i < nums.Count; i++)
+            {
+                if (i < mid)
+                    left.Add(nums[i]);
+                else
+                    right.Add(nums[i]);
+            }
+
+            Console.WriteLine("----------LEFT-----------");
+            foreach (var item in left)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine("----------RIGHT-----------");
+            foreach (var item in right)
+            {
+                Console.WriteLine(item);
+            }
+
+
         }
 
         private static void Print(int[] nums)
