@@ -24,6 +24,20 @@ namespace Day06
             else if (compResult == 1) Console.WriteLine($"{s1} GREATER THAN {s2}");
 
             Split(nums.ToList());
+
+            List<int> numbers = nums.ToList();
+            int search = 7;
+            int foundIndex = LinearSearch(numbers, search);
+            if (foundIndex >= 0)
+                Console.WriteLine($"{search} was found at index {foundIndex}");
+            else
+                Console.WriteLine($"{search} was not found");
+            search = 100; 
+            foundIndex = LinearSearch(numbers, search);
+            if (foundIndex >= 0)
+                Console.WriteLine($"{search} was found at index {foundIndex}");
+            else
+                Console.WriteLine($"{search} was not found");
         }
 
         static void Split(List<int> nums)
@@ -51,6 +65,20 @@ namespace Day06
             }
 
 
+        }
+
+        static int LinearSearch(List<int> numbers, int searchNumber)
+        {
+            int index = -1;
+            for (int i = 0; i < numbers.Count; i++)
+            {
+                if (numbers[i] == searchNumber)
+                {
+                    index = i;
+                    break;
+                }
+            }
+            return index;
         }
 
         private static void Print(int[] nums)
