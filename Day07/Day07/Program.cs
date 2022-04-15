@@ -13,40 +13,75 @@ namespace Day07
             Console.WriteLine();
             DoIt("Kill them all!");
 
-            //Task tasker = Task.Factory.StartNew(TaskDoIt);
-            Task tasker = Task.Factory.StartNew(() =>
-            {
-                Random rando = new Random();
-                while (true)
-                {
-                    lock (locker)
-                    {
-                        Console.SetCursorPosition(
-                        rando.Next(Console.WindowWidth / 2),
-                        rando.Next(Console.WindowHeight - 1));
-                        Console.ForegroundColor = (ConsoleColor)rando.Next(16);
-                        Console.WriteLine("A");
-                        Console.ResetColor();
-                    }
-                }
-            }); 
-            Task tasker2 = Task.Factory.StartNew(() =>
-            {
-                Random rando = new Random();
-                while (true)
-                {
-                    lock (locker)
-                    {
-                        Console.SetCursorPosition(
-                            rando.Next(Console.WindowWidth / 2, Console.WindowWidth),
-                            rando.Next(Console.WindowHeight - 1));
-                        Console.BackgroundColor = (ConsoleColor)rando.Next(16);
-                        Console.WriteLine("B");
-                        Console.ResetColor();
-                    }
-                }
-            });
+            Task aTask = Task.Factory.StartNew(ATask);
+            Task bTask = Task.Factory.StartNew(BTask);
+            //Task tasker = Task.Factory.StartNew(() =>
+            //{
+            //    Random rando = new Random();
+            //    while (true)
+            //    {
+            //        lock (locker)
+            //        {
+            //            Console.SetCursorPosition(
+            //            rando.Next(Console.WindowWidth / 2),
+            //            rando.Next(Console.WindowHeight - 1));
+            //            Console.ForegroundColor = (ConsoleColor)rando.Next(16);
+            //            Console.WriteLine("A");
+            //            Console.ResetColor();
+            //        }
+            //    }
+            //}); 
+            //Task tasker2 = Task.Factory.StartNew(() =>
+            //{
+            //    Random rando = new Random();
+            //    while (true)
+            //    {
+            //        lock (locker)
+            //        {
+            //            Console.SetCursorPosition(
+            //                rando.Next(Console.WindowWidth / 2, Console.WindowWidth),
+            //                rando.Next(Console.WindowHeight - 1));
+            //            Console.BackgroundColor = (ConsoleColor)rando.Next(16);
+            //            Console.WriteLine("B");
+            //            Console.ResetColor();
+            //        }
+            //    }
+            //});
             Console.ReadKey();
+        }
+
+        static void ATask()
+        {
+            Random rando = new Random();
+            while (true)
+            {
+                lock (locker)
+                {
+                    Console.SetCursorPosition(
+                    rando.Next(Console.WindowWidth / 2),
+                    rando.Next(Console.WindowHeight - 1));
+                    Console.ForegroundColor = (ConsoleColor)rando.Next(16);
+                    Console.WriteLine("A");
+                    Console.ResetColor();
+                }
+            }
+        }
+
+        static void BTask()
+        {
+            Random rando = new Random();
+            while (true)
+            {
+                lock (locker)
+                {
+                    Console.SetCursorPosition(
+                        rando.Next(Console.WindowWidth / 2, Console.WindowWidth),
+                        rando.Next(Console.WindowHeight - 1));
+                    Console.BackgroundColor = (ConsoleColor)rando.Next(16);
+                    Console.WriteLine("B");
+                    Console.ResetColor();
+                }
+            }
         }
 
         static void TaskDoIt()
