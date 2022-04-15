@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.Linq;//Language Integrated Queries. database kind-of queries. SQL
 using System.Threading;
 
 namespace Day03
@@ -170,7 +171,8 @@ namespace Day03
         {
             Console.Clear();
             Console.WriteLine("-----------GRADES------------");
-            foreach (var student in course)
+            var courseInfo = course.OrderByDescending(kvp => kvp.Value);
+            foreach (var student in courseInfo)
             {
                 double grade = student.Value;
                 Console.Write(student.Key);

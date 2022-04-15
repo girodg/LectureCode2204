@@ -90,7 +90,11 @@ namespace Day06
 
         private static void Swap(int[] nums, int index1, int index2)
         {
-            (nums[index1], nums[index2]) = (nums[index2], nums[index1]);
+            int temp = nums[index1];
+            nums[index1] = nums[index2];
+            nums[index2] = temp;
+
+            //(nums[index1], nums[index2]) = (nums[index2], nums[index1]);
         }
     }
 }
