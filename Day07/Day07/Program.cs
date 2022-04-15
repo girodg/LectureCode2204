@@ -5,6 +5,7 @@ namespace Day07
 {
     internal class Program
     {
+        static object locker = new object();
         enum Superpower { Strength, Swimming, Money, Telepathy }
         static void Main(string[] args)
         {
@@ -18,11 +19,31 @@ namespace Day07
                 Random rando = new Random();
                 while (true)
                 {
-                    Console.SetCursorPosition(
-                        rando.Next(Console.WindowWidth),
-                        rando.Next(Console.WindowHeight-1));
-                    Console.ForegroundColor = (ConsoleColor)rando.Next(16);
-                    Console.WriteLine("Do it!");
+                    lock (locker)
+                    {
+                        Console.SetCursorPosition(
+                        rando.Next(Console.WindowWidth / 2),
+                        rando.Next(Console.WindowHeight - 1));
+                        Console.ForegroundColor = (ConsoleColor)rando.Next(16);
+                        Console.WriteLine("A");
+                        Console.ResetColor();
+                    }
+                }
+            }); 
+            Task tasker2 = Task.Factory.StartNew(() =>
+            {
+                Random rando = new Random();
+                while (true)
+                {
+                    lock (locker)
+                    {
+                        Console.SetCursorPosition(
+                            rando.Next(Console.WindowWidth / 2, Console.WindowWidth),
+                            rando.Next(Console.WindowHeight - 1));
+                        Console.BackgroundColor = (ConsoleColor)rando.Next(16);
+                        Console.WriteLine("B");
+                        Console.ResetColor();
+                    }
                 }
             });
             Console.ReadKey();
