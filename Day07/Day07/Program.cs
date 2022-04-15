@@ -9,6 +9,11 @@ namespace Day07
         enum Superpower { Strength, Swimming, Money, Telepathy }
         static void Main(string[] args)
         {
+            int num = 5;
+            Console.ForegroundColor = (num == 5) ? ConsoleColor.Green : ConsoleColor.Red;
+            Console.WriteLine($"{"apple",10}");
+            Console.WriteLine($"{"banana",10}");
+
             Console.ReadKey();
             Console.WriteLine();
             DoIt("Kill them all!");
