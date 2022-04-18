@@ -15,18 +15,26 @@ namespace Day07_OOP
             Console.WriteLine(bank.TypeOfAccount);//will call the get
             //bank._balance = double.MinValue;
 
-            Inventory backpack = new Inventory(3, new List<string>());
-            try
-            {
-                backpack.AddItem("Book");
-                backpack.AddItem("long sword");
-                backpack.AddItem("round shield");
-                backpack.AddItem("potion of invisibility");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            Inventory backpack = new Inventory(3, new List<FantasyWeapon>());
+            //try
+            //{
+            //    backpack.AddItem("Book");
+            //    backpack.AddItem("long sword");
+            //    backpack.AddItem("round shield");
+            //    backpack.AddItem("potion of invisibility");
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
+
+
+            FantasyWeapon sting = new FantasyWeapon(WeaponRarity.Legendary, 100, 500, 100000);
+            int damage = sting.DoDamage();
+            Console.WriteLine($"We swing sting and do {damage} to the rat.");
+
+            backpack.AddItem(sting);
+            backpack.AddItem(new FantasyWeapon(WeaponRarity.Common, 1, 10, 100));
         }
     }
 }

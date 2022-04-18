@@ -9,7 +9,7 @@ namespace Day07CL
     public class Inventory
     {
         private int _capacity = 0;//size of our backpack
-        private List<string> _items = new List<string>();//initializing the list
+        private List<FantasyWeapon> _items = new List<FantasyWeapon>();//initializing the list
 
         public int Capacity
         {
@@ -20,7 +20,7 @@ namespace Day07CL
                     _capacity = value;
             }
         }
-        public List<string> Items
+        public List<FantasyWeapon> Items
         {
             get { return _items; }
             private set { _items = value; }
@@ -31,13 +31,13 @@ namespace Day07CL
         }
 
 
-        public Inventory(int capacity, List<string> items)
+        public Inventory(int capacity, List<FantasyWeapon> items)
         {
             Capacity = capacity;
-            Items = new List<string>(items);
+            Items = new List<FantasyWeapon>(items);
         }
 
-        public void AddItem(string item)
+        public void AddItem(FantasyWeapon item)
         {
             if (Count < Capacity)
                 _items.Add(item);
