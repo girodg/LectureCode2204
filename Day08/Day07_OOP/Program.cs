@@ -35,6 +35,9 @@ namespace Day07_OOP
 
             backpack.AddItem(sting);
             backpack.AddItem(new FantasyWeapon(WeaponRarity.Common, 1, 10, 100));
+
+            Superhero bats = new Superhero("Batman", Superpower.Money, "Bruce Wayne", 35);
+            Person alfred = new Person("Alfred Pennyworth", 85);
         }
     }
 }
