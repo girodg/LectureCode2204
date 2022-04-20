@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Day07CL
 {
-    public class Person
+    public class Person : Human
     {
+
         public string Name { get; set; }
-        public int Age { get; set; }
 
         public Person(string name, int age)
         {
@@ -18,7 +18,7 @@ namespace Day07CL
             Age = age;
         }
 
-        public void Eat(string food)
+        public override void Eat(string food)
         {
             Console.WriteLine($"I am hungry. Eating {food}. nom. nom.");
         }

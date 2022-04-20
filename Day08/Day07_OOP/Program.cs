@@ -36,6 +36,7 @@ namespace Day07_OOP
             backpack.AddItem(sting);
             backpack.AddItem(new FantasyWeapon(WeaponRarity.Common, 1, 10, 100));
             backpack.AddItem(new BowWeapon(10, 15, WeaponRarity.Common, 5, 50, 200));
+            backpack.PrintInventory();
 
             Superhero bats = new Superhero("Batman", Superpower.Money, "Bruce Wayne", 35);
             Person alfred = new Person("Alfred Pennyworth", 85);
@@ -69,8 +70,14 @@ namespace Day07_OOP
 
             //3. use pattern matching
             if (alfred is Superhero hero3) { }
+
+            List<Person> characters = new List<Person>();
+            characters.Add(alfred);
+            characters.Add(bats);
+            characters.Add(new Superhero("Superman", Superpower.Fly, "Clark Kent", 25));
+            characters.Add(new Superhero("Flash", Superpower.Speed, "Barry Allen", 25));
         }
-        static void Characters(Person perp)
+        static void Characters(List<Person> people)
         {
 
         }

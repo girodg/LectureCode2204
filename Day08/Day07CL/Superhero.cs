@@ -20,6 +20,8 @@ namespace Day07CL
             Console.WriteLine($"\tSuperhero ({persona})");
             Persona = persona;
             Power = power;
+
+            _height = 1.4F;
         }
     }
 }
