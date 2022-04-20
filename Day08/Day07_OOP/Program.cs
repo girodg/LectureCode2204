@@ -47,6 +47,28 @@ namespace Day07_OOP
             //UPCASTING
             //from a DERIVED variable to a BASE variable
             Person bruce = bats;//did this create a new object??
+
+            //DOWNCASTING
+            //from a BASE variable to a DERIVED variable
+            //THIS IS NOT SAFE!
+            //3 ways to make this safe
+
+            //1. Explicit cast + try-catch
+            try
+            {
+                Superhero hero = (Superhero)alfred;
+            }
+            catch (Exception)
+            {
+            }
+
+            //2. use the 'as' keyword + check for null
+            //   will assign NULL to the variable if it cannot downcast
+            Superhero hero2 = alfred as Superhero;
+            if(hero2 != null) { }
+
+            //3. use pattern matching
+            if (alfred is Superhero hero3) { }
         }
         static void Characters(Person perp)
         {
