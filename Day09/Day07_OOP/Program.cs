@@ -9,12 +9,6 @@ namespace Day07_OOP
     {
         static void Main(string[] args)
         {
-            //how to loop over an enum
-            foreach (ConsoleColor color in Enum.GetValues(typeof(ConsoleColor)))
-            {
-                Console.WriteLine($"color: {color}");
-            }
-
             int acctNumber;
             BankAccount bank = new BankAccount(123456789, 987654321, 10000, BankAccountType.Savings);
             //bank.TypeOfAccount = (BankAccountType)20;// BankAccountType.Checking;//will call the set
