@@ -35,9 +35,22 @@ namespace Day07_OOP
 
             backpack.AddItem(sting);
             backpack.AddItem(new FantasyWeapon(WeaponRarity.Common, 1, 10, 100));
+            backpack.AddItem(new BowWeapon(10, 15, WeaponRarity.Common, 5, 50, 200));
 
             Superhero bats = new Superhero("Batman", Superpower.Money, "Bruce Wayne", 35);
             Person alfred = new Person("Alfred Pennyworth", 85);
+
+            long dVal = 5;
+            int iVal = (int)dVal;//explicit cast
+            dVal = iVal;//implicit cast
+
+            //UPCASTING
+            //from a DERIVED variable to a BASE variable
+            Person bruce = bats;//did this create a new object??
+        }
+        static void Characters(Person perp)
+        {
+
         }
     }
 }
