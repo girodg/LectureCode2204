@@ -23,5 +23,11 @@ namespace Day07CL
 
             _height = 1.4F;
         }
+
+        public override void WhoAreYou()
+        {
+            base.WhoAreYou();//extending the base method
+            Console.WriteLine($"\tI am {Persona}. My 'special' ability is {Power}!");
+        }
     }
 }

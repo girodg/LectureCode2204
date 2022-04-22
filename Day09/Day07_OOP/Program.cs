@@ -76,10 +76,14 @@ namespace Day07_OOP
             characters.Add(bats);
             characters.Add(new Superhero("Superman", Superpower.Fly, "Clark Kent", 25));
             characters.Add(new Superhero("Flash", Superpower.Speed, "Barry Allen", 25));
+            ShowCharacters(characters);
         }
-        static void Characters(List<Person> people)
+        static void ShowCharacters(List<Person> people)
         {
-
+            foreach (Person person in people)
+            {
+                person.WhoAreYou();
+            }
         }
     }
 }

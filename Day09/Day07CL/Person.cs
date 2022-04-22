@@ -22,5 +22,10 @@ namespace Day07CL
         {
             Console.WriteLine($"I am hungry. Eating {food}. nom. nom.");
         }
+
+        public virtual void WhoAreYou()
+        {
+            Console.WriteLine($"I am {Name}. And I am {Age} years old.");
+        }
     }
 }
