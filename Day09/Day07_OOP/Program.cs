@@ -39,6 +39,8 @@ namespace Day07_OOP
             backpack.AddItem(new BowWeapon(10, 15, WeaponRarity.Common, 5, 50, 200));
             backpack.PrintInventory();
 
+            Inventory backpack2 = backpack.Clone();
+
             Superhero bats = new Superhero("Batman", Superpower.Money, "Bruce Wayne", 35);
             Person alfred = new Person("Alfred Pennyworth", 91);
 
