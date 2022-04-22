@@ -2,6 +2,7 @@
 using Day07CL.Banking;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Day07_OOP
 {
@@ -38,6 +39,7 @@ namespace Day07_OOP
             backpack.AddItem(new FantasyWeapon(WeaponRarity.Common, 1, 10, 100));
             backpack.AddItem(new BowWeapon(10, 15, WeaponRarity.Common, 5, 50, 200));
             backpack.PrintInventory();
+            List<BowWeapon> bows = backpack.Bows();
 
             Inventory backpack2 = backpack.Clone();
 
@@ -80,6 +82,11 @@ namespace Day07_OOP
             characters.Add(new Superhero("Superman", Superpower.Fly, "Clark Kent", 25));
             characters.Add(new Superhero("Flash", Superpower.Speed, "Barry Allen", 25));
             ShowCharacters(characters);
+
+            using (Inventory inv = new Inventory(10, new List<FantasyWeapon>()))//IDisposable
+            {
+
+            }//calls Dispose()
         }
         static void ShowCharacters(List<Person> people)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Day07CL
 {
-    public class Inventory
+    public class Inventory : IDisposable
     {
         private int _capacity = 0;//size of our backpack
         private List<FantasyWeapon> _items = new List<FantasyWeapon>();//initializing the list
@@ -58,6 +58,11 @@ namespace Day07CL
                 //    Console.WriteLine($"\tAnd it's a bow with {bow.ArrowCount} arrows and a capacity of {bow.ArrowCapacity}.");
                 //}
             }
+        }
+
+        public void Dispose()
+        {
+            Console.WriteLine("Throwing away my backpack!");
         }
     }
 }
