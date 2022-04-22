@@ -30,7 +30,8 @@ namespace Day07_OOP
 
 
             FantasyWeapon sting = new FantasyWeapon(WeaponRarity.Legendary, 100, 500, 100000);
-            int damage = sting.DoDamage();
+            int damage = sting.DoDamage(100);
+             damage = sting.DoDamage();
             Console.WriteLine($"We swing sting and do {damage} to the rat.");
 
             backpack.AddItem(sting);
@@ -39,7 +40,7 @@ namespace Day07_OOP
             backpack.PrintInventory();
 
             Superhero bats = new Superhero("Batman", Superpower.Money, "Bruce Wayne", 35);
-            Person alfred = new Person("Alfred Pennyworth", 85);
+            Person alfred = new Person("Alfred Pennyworth", 91);
 
             long dVal = 5;
             int iVal = (int)dVal;//explicit cast

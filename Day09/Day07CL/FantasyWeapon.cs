@@ -21,10 +21,22 @@ namespace Day07CL
             Cost = cost;
         }
 
-        public int DoDamage()
+        //public int DoDamage()
+        //{
+        //    Random randy = new Random();
+        //    return (int)(MaxDamage * randy.NextDouble());
+        //}
+
+        public int DoDamage(int enchantment = 0)
         {
             Random randy = new Random();
-            return (int)(MaxDamage * randy.NextDouble());
+            return (int)((MaxDamage + enchantment) * randy.NextDouble());
+        }
+
+        public virtual void Display()
+        {
+            Console.WriteLine($"I have a level {Level} {Rarity} weapon that can do {MaxDamage} damage. It costs {Cost}.");
+
         }
     }
 }
